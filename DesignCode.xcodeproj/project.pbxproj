@@ -13,6 +13,7 @@
 		5E30ABCC23EEDF4A00B1181D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E30ABCB23EEDF4A00B1181D /* Assets.xcassets */; };
 		5E30ABCF23EEDF4A00B1181D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E30ABCE23EEDF4A00B1181D /* Preview Assets.xcassets */; };
 		5E30ABD223EEDF4A00B1181D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E30ABD023EEDF4A00B1181D /* LaunchScreen.storyboard */; };
+		5E63884F23F7F35D003233F3 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E63884E23F7F35D003233F3 /* MenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		5E30ABCE23EEDF4A00B1181D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		5E30ABD123EEDF4A00B1181D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E30ABD323EEDF4A00B1181D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E63884E23F7F35D003233F3 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				5E30ABC523EEDF4100B1181D /* AppDelegate.swift */,
 				5E30ABC723EEDF4100B1181D /* SceneDelegate.swift */,
 				5E30ABC923EEDF4100B1181D /* ContentView.swift */,
+				5E63884E23F7F35D003233F3 /* MenuView.swift */,
 				5E30ABCB23EEDF4A00B1181D /* Assets.xcassets */,
 				5E30ABD023EEDF4A00B1181D /* LaunchScreen.storyboard */,
 				5E30ABD323EEDF4A00B1181D /* Info.plist */,
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E30ABC623EEDF4100B1181D /* AppDelegate.swift in Sources */,
+				5E63884F23F7F35D003233F3 /* MenuView.swift in Sources */,
 				5E30ABC823EEDF4100B1181D /* SceneDelegate.swift in Sources */,
 				5E30ABCA23EEDF4100B1181D /* ContentView.swift in Sources */,
 			);

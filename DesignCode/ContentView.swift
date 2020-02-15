@@ -9,9 +9,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State var show = false  //是否允许动画状态之间进行切换.要在body之前
-    @State var viewState = CGSize.zero           //定义一个初始为0的CGSize 的状态  State状态
+    @State var show = false         //是否允许动画状态之间进行切换.要在body之前
+    @State var viewState = CGSize.zero           //定义一个初始为0的CGSize 的状态
     @State var showCard = false
+    @State var bottomState = CGSize.zero   //底部卡片状态
+    @State var showFull = false     //是否显示完整底部卡片
+    
+    
     
     var body: some View {
         ZStack {
@@ -19,13 +23,13 @@ struct ContentView: View {
                 .blur(radius: show ? 20 : 0)     //模糊(半径)
                 .opacity(showCard ? 0.4 : 1)        //不透明
                 .offset(y: showCard ? -200 : 0)   //往上位移
-//                .animation(.default)  //default类似easeInOut的0.3到0.5
+                //                .animation(.default)  //default类似easeInOut的0.3到0.5
                 .animation(
                     Animation
-                    .default
+                        .default
                         .delay(0.1)                 //延迟
-//                    .speed(2)                         //速度
-//                    .repeatForever(autoreverses: true)      //重复(是否计数)
+                    //                    .speed(2)                         //速度
+                    //                    .repeatForever(autoreverses: true)      //重复(是否计数)
             )
             
             BackCardView()                  //卡片顺序与显示顺序相反，第下面一个在最前面展示
@@ -55,15 +59,15 @@ struct ContentView: View {
                 .rotationEffect(Angle.degrees(show ? 0 : 5))  //三元运算符判断是否分别对应的值
                 .rotationEffect(Angle(degrees: showCard ? -5 : 0))
                 //.rotationEffect(Angle(degrees:5))   //2,Angle角度
-                .rotation3DEffect(Angle(degrees:showCard ? 0 : 5), axis: (x: 10.0, y: 0, z: 0))
+                .rotation3DEffect(Angle(degrees:showCard ? 0 :  5), axis: (x: 10.0, y: 0, z: 0))
                 .blendMode(.hardLight)   //强光
-            //.animation(.linear)    //线性动画对于不透明度的改变，旋转这些不需要动量的动画非常好
+                //.animation(.linear)    //线性动画对于不透明度的改变，旋转这些不需要动量的动画非常好
                 .animation(.easeInOut(duration: 0.3))  //动画时间建议不要超过1秒避免影响UI渲染
             
             CardView()      //修改组件,变量,数据时，会暂停预览,需要手动resume   修饰器的顺序影响ui的动画效果，要注意顺序
                 .frame(width: showCard ? 375 : 340.0, height: 220.0)
                 .background(Color.black)
-//                .cornerRadius(20)
+                //                .cornerRadius(20)
                 .clipShape(RoundedRectangle(cornerRadius: showCard ? 30 : 20, style: .continuous))
                 //clipShape View的形状， continuous连续
                 .shadow(radius: 20)                                     //之前的修饰符全部交给单独的view做修饰
@@ -71,26 +75,55 @@ struct ContentView: View {
                 .offset(y: showCard ? -100 : 0)
                 .blendMode(.hardLight)
                 .animation(.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0))           //弹性动画。  response回应  dampingFraction阻力(越大回弹越小)  blendDuration过渡到下一个动画的时间(或者说是当前动画的持续时间)
-            .onTapGesture {                 //顶端手势
-                self.showCard.toggle()      //当用户点击时，是否发生动作.play可以预览操作
+                .onTapGesture {                 //顶端手势
+                    self.showCard.toggle()      //当用户点击时，是否发生动作.play可以预览操作
             }
                 
-            .gesture(                                               //手势定义
-                DragGesture().onChanged{ value in           //存储后面的内容在值里
-                    self.viewState=value.translation        //手势移动值
-                    self.show=true                              //是否在手势的时候打开其他动画
-                }
-            .onEnded{value in
-                self.viewState = .zero                      //通俗点解释就是松手复位
-                self.show=false
-                }
+                .gesture(                                               //手势定义
+                    DragGesture().onChanged{ value in           //存储后面的内容在值里
+                        self.viewState=value.translation        //手势移动值
+                        self.show=true                              //是否在手势的时候打开其他动画
+                    }
+                    .onEnded{value in
+                        self.viewState = .zero                      //通俗点解释就是松手复位
+                        self.show=false
+                    }
             )
+//            Text("\(bottomState.height)").offset(y:-300)
             
             BottonCardView()
                 .offset(x: 0, y: showCard ?  360 : 1000)
+                .offset(y:bottomState.height)
                 .blur(radius:show ? 20 : 0)
                 .animation(.timingCurve(0.2, 0.8, 0.2, 1, duration: 0.8))   //带时间曲线的动画
-//                .animation(.default)
+                //                .animation(.default)
+                .gesture(
+                    DragGesture().onChanged { value in
+                        self.bottomState=value.translation
+                        if self.showFull {
+                            self.bottomState.height += -300    //添加高度值
+                        }
+                        if self.bottomState.height < -300{
+                            self.bottomState.height = -300
+                        }
+                        
+                    }
+                    .onEnded{ value in
+                        if self.bottomState.height > 50{
+                            self.showCard = false
+                        }
+                        
+                        //当高度和是否全部显示的两个标值分辨满足的时候分别显示不同的状态
+                        if (self.bottomState.height < -100 && !self.showFull) || (self.bottomState.height < -250 && self.showFull ) {
+                            self.bottomState.height = -300
+                            self.showFull = true
+                        }else{
+                            self.bottomState = .zero
+                            self.showFull = false
+                        }
+                        
+                    }
+            )
         }
     }
 }
@@ -117,15 +150,15 @@ struct CardView: View {
                 Spacer()
                 Image("Logo1")
             }
-            .padding(.horizontal,20)     //修饰符的顺序很重要，不要弄错
-            .padding(.top,20)
+                .padding(.horizontal,20)     //修饰符的顺序很重要，不要弄错
+                .padding(.top,20)
             Spacer()
             Image("Card1")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 300, height: 110,alignment: .top)
         }
-            
+        
         
     }
 }
@@ -177,6 +210,6 @@ struct BottonCardView: View {
             .background(Color.white)
             .cornerRadius(30)
             .shadow(radius: 20)
-            
+        
     }
 }
