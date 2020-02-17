@@ -13,7 +13,7 @@ DesignCode
 
 * uppercased() 字母大写
 
-* Repeat直接重复组件
+* Repeat直接重复组件
 
 * ScrollView内的内容放在HStack中即可变成水平滚动(别忘了horizontal)。showIndicators滚动条指针
 
