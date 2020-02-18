@@ -30,8 +30,8 @@ struct HomeView: View {
             
             ScrollView(.horizontal,showsIndicators: false) {               //可以横向滚动
                 HStack(spacing:30) {                            //HStack变横向,内间距
-                    ForEach(0 ..< 5) { item in              //重复
-                        SectionView()
+                    ForEach(sectionDate) { item in              //重复 这里需要从字典遍历
+                        SectionView(section: item)         //数值在section中
                     }
                 }
                     .padding(30)                    //离边框距离
@@ -52,23 +52,25 @@ struct HomeView_Previews: PreviewProvider {
 }
 
 struct SectionView: View {
+    var section:Section                 //引入
+    
     var body: some View {
         VStack {
             HStack(alignment: .top) {
-                Text("Prototype design in SwiftUI")
+                Text(section.title)
                     .font(.system(size: 24, weight: .bold))
                     .frame(width:160,alignment: .leading)
                     .foregroundColor(.white)
                 
                 Spacer()
                 
-                Image("Logo1")
+                Image(section.logo)
                 
             }
-            Text("18 Sections".uppercased())
+            Text(section.text.uppercased())
                 .frame(maxWidth:.infinity,alignment: .leading)
             
-            Image("Card1")
+            section.image
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width:210)
@@ -78,8 +80,27 @@ struct SectionView: View {
             
             
         .frame(width: 275,height: 275)
-        .background(Color("card1"))
+        .background(section.color)
         .cornerRadius(30)
-        .shadow(color: Color("card1").opacity(0.3) , radius: 20, x: 0, y: 20)
+        .shadow(color: section.color.opacity(0.3) , radius: 20, x: 0, y: 20)
     }
 }
+
+struct Section: Identifiable {          //声明个可识别的section,下面是所有需要的类型定义
+    var id = UUID()
+    var title:String
+    var text:String
+    var logo:String
+    var image:Image
+    var color:Color
+}
+
+let sectionDate=[                           //声明一个数组，用来调入对应的值
+    Section(title: "Prototype design in SwiftUI", text: "18 Sections", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "Card1")), color: Color(#colorLiteral(red: 0.1764705926, green: 0.01176470611, blue: 0.5607843399, alpha: 1))),
+    Section(title: "Build a SwiftUI app", text: "20 Sections", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "Background1")), color: Color(#colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1))),
+    Section(title: "SwiftUI Advance", text: "20 Sections", logo: "Logo1", image: Image(uiImage: #imageLiteral(resourceName: "Card2")), color: Color(#colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1)))
+]
+
+
+
+
