@@ -10,6 +10,8 @@ import SwiftUI
 
 struct HomeView: View {
     @Binding var showProfile:Bool
+    @State var showUpdate=false
+    
     var body: some View {
         VStack {
             
@@ -22,6 +24,19 @@ struct HomeView: View {
                 
                 AvaterView(showProfile: $showProfile)
                 
+                Button(action: {self.showUpdate.toggle()}) {
+                    Image(systemName: "bell")
+                        .renderingMode(.original)
+                        .font(.system(size: 16, weight: .medium))
+                        .frame(width:36,height: 36)
+                        .background(Color.white)
+                        .clipShape(Circle())
+                        .shadow(color: Color.black.opacity(0.1), radius: 1, x: 0, y: 1)
+                        .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 10)
+                }
+                .sheet(isPresented: $showUpdate){
+                    MenuView()
+                }
             }
                 
             .padding(.horizontal)
@@ -29,9 +44,16 @@ struct HomeView: View {
                 .padding(.top,30)                            //距离顶部30
             
             ScrollView(.horizontal,showsIndicators: false) {               //可以横向滚动
-                HStack(spacing:30) {                            //HStack变横向,内间距
+                HStack(spacing:20) {                            //HStack变横向,内间距
                     ForEach(sectionDate) { item in              //重复 这里需要从字典遍历
-                        SectionView(section: item)         //数值在section中
+                        GeometryReader { geometry in        //从滚动图形中获取帧
+                            SectionView(section: item)
+                                .rotation3DEffect(Angle(degrees:
+                                    //-30是为了起始角度清零,minX是因为是横向滚动，minY就是垂直
+                                    Double(geometry.frame(in: .global).minX - 30) / -20
+                                ), axis: (x: 0, y: 10.0, z: 0))
+                        }         //数值在section中
+                            .frame(width:275,height:275)
                     }
                 }
                     .padding(30)                    //离边框距离
