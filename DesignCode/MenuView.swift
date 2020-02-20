@@ -36,23 +36,23 @@ struct MenuView: View {
             .frame(maxWidth:.infinity)
             .frame(height:300)
                 //colorliteral拾色器直接选色.gradient渐变
-            .background(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)), Color(#colorLiteral(red: 0.8705882353, green: 0.8941176471, blue: 0.9450980392, alpha: 1))]), startPoint: .top, endPoint: .bottom))
+                .background(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)), Color(#colorLiteral(red: 0.8705882353, green: 0.8941176471, blue: 0.9450980392, alpha: 1))]), startPoint: .top, endPoint: .bottom))
                 //设置Stack外观圆角要在clipshape这个剪辑形状修饰符下
-            .clipShape(RoundedRectangle(cornerRadius: 30, style:.continuous))
-//                .shadow(radius: 30)
+                .clipShape(RoundedRectangle(cornerRadius: 30, style:.continuous))
+                //                .shadow(radius: 30)
                 //把阴影做成在下方的效果，而不是整体阴影
                 .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 20)
                 .padding(.horizontal,30)
-            .overlay(
-                Image("Avatar")
-                .resizable()            //可以定义大小
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width:60,height: 60)
-                    .clipShape(Circle())
-                    .offset(y:-150)
+                .overlay(
+                    Image("Avatar")
+                        .resizable()            //可以定义大小
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width:60,height: 60)
+                        .clipShape(Circle())
+                        .offset(y:-150)
             )
         }
-        .padding(.bottom,30)    //距离底部30
+            .padding(.bottom,30)    //距离底部30
     }
 }
 
@@ -74,7 +74,7 @@ struct MenuRow: View {
                 .imageScale(.large)
                 .frame(width:32,height:32)
                 .foregroundColor(Color(#colorLiteral(red: 0.662745098, green: 0.7333333333, blue: 0.831372549, alpha: 1)))   //前景色
-         
+            
             Text(title)
                 .font(.system(size: 20, weight: .bold, design: .default))
                 .frame(width:120,alignment: .leading)  //向左对齐

@@ -3,6 +3,66 @@ DesignCode
 
 ###### 跟着教程做练习(免费试读版)
 
+*20200220*
+
+**合并和编辑数据**
+
+```
+学习如何用内置函数调用外部数据
+```
+
+* ObservableObject 的对象类在Combine引入后要优先创建
+
+* 在需要调用储存函数的地方@ObservedObject 调用该swift名
+
+* 创建一个函数，用来添加更新内容
+
+* 让List在foreach前就可以拥有滑动删除功能(list后面的修饰移动给foreach)
+
+* onDelete  添加滑动删除(index索引)   从updates中remove，记得self。另外定义索引位置要强制可选!
+
+* navigatitonbaritem  添加导航栏中的元素
+
+* EditButton 可以直接使用，添加编辑按钮
+
+* IndexSet 索引集
+
+* 相比onDelete,onMove具有多个值(源source、目标destination)
+
+
+
+**导航样式与传递数据**
+
+```
+为您的导航列表项创建详细信息屏幕
+```
+
+* listStyle  列表样式
+
+* 每页详细内容里的图片大小(对齐)，文字对齐要严格检查并且修改
+
+**导航与列表**
+
+```
+在SwiftUI中使用导航选项和演示构建列表视图
+```
+
+* NavigationLink 只能在NavigationView中起作用，并不能单独理解成按钮(button)
+
+* Desination 目标，可以是任何元素(例如：Text)
+
+* Content 内容     内容在link上显示，目标在点击后的页面显示
+
+* 把导航嵌入列表，就有你想要的了
+
+* lineLimit  text的行数限制
+
+* accentColor(强调色) primary secondar(主/次色) 这类颜色适配darkmode
+
+* vertical    padding垂直方向上下的控制。trailing  右侧。leading  左侧。
+
+---
+
 *20200219*
 
 *模态表达*
@@ -14,8 +74,6 @@ DesignCode
 * oraginal  原始的默认按钮颜色是黑色
 
 * sheet 要在按钮后建立，跳转对象
-
-
 
 **3D滚动动画**
 
@@ -31,8 +89,6 @@ GeometryReader:一个容器视图，根据其自身大小和坐标空间定义�
   ```
   geometry.frame(in: .global).minX    //从GeometryReader中获取图形的帧，本例子只需要左边的值
   ```
-  
-  
 
 ---
 
@@ -46,7 +102,7 @@ GeometryReader:一个容器视图，根据其自身大小和坐标空间定义�
 
 * 首先建立一个Section,并声明对应的变量与类型(颜色或图像这些必须声明成可识别的)
 
-* 再定义一个数组，包含对应的变量内容与值
+* 再定义一个sectionData数组，包含对应的变量内容与值
 
 * 在对应的地方调用(先声明这个section)，并且在重复中使用他(遍历中调用，数值区间需要替换)
 
