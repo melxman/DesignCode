@@ -27,7 +27,7 @@ DesignCode
 
 * IndexSet 索引集
 
-* 相比onDelete,onMove具有多个值(源source、目标destination)
+* 相比onDelete,onMove具有多个值(源source、目标destination)  
 
 
 
@@ -49,7 +49,7 @@ DesignCode
 
 * NavigationLink 只能在NavigationView中起作用，并不能单独理解成按钮(button)
 
-* Desination 目标，可以是任何元素(例如：Text)
+* Desination 目标，可以是任何元素(例如：Text)
 
 * Content 内容     内容在link上显示，目标在点击后的页面显示
 
@@ -65,7 +65,7 @@ DesignCode
 
 *20200219*
 
-*模态表达*
+**模态表达**
 
 ```
 使用内置模型视图导航到另一屏幕
@@ -73,7 +73,7 @@ DesignCode
 
 * oraginal  原始的默认按钮颜色是黑色
 
-* sheet 要在按钮后建立，跳转对象
+* sheet 要在按钮后建立，跳转对象  
 
 **3D滚动动画**
 
@@ -128,7 +128,7 @@ GeometryReader:一个容器视图，根据其自身大小和坐标空间定义�
 
 * ```
   maxWidth:.infinity   //元素宽度最大
-  ```
+  ```  
 
 **绑定和屏幕尺寸**
 
@@ -142,7 +142,7 @@ GeometryReader:一个容器视图，根据其自身大小和坐标空间定义�
 
 ```
 let screen=UIScreen.main.bounds   //允许我们检测屏幕尺寸。在外部声明可以在整个应用中重载
-```
+```  
 
 **拖动进度和点击背景**
 
@@ -182,7 +182,7 @@ let screen=UIScreen.main.bounds   //允许我们检测屏幕尺寸。在外部�
 ```
 
 * Literal挺好用的。overlay叠加层(或者说覆盖层)也很不错
-* Color/Text在SwfitUI中也是view。很多都可以当作view处理
+* Color/Text在SwfitUI中也是view。很多都可以当作view处理  
 
 **SF符号与属性**
 
@@ -191,7 +191,7 @@ let screen=UIScreen.main.bounds   //允许我们检测屏幕尺寸。在外部�
 ```
 
 * 使用**SF Symbols**工具可以找到所有内置系统的图标与名称，直接拿来用就可以了。
-* 组件的属性在组内Stack中定义，并且在需要值的地方填入，调用组件的时候就可以直接填写了
+* 组件的属性在组内Stack中定义，并且在需要值的地方填入，调用组件的时候就可以直接填写了  
 
 **消除与拖拽锚点**
 
@@ -209,13 +209,13 @@ let screen=UIScreen.main.bounds   //允许我们检测屏幕尺寸。在外部�
 
 ```
 使用state(状态)创建一个漂亮的动画，过渡与动作
-```
+```  
 
 **手势与事件**
 
 ```
 通过SwiftUI中的拖动手势和事件使您的应用程序具有交互性和动画效果
-```
+```  
 
 **定时曲线与延迟动画**
 
@@ -233,7 +233,7 @@ let screen=UIScreen.main.bounds   //允许我们检测屏幕尺寸。在外部�
 
 ```
 在SwiftUI中使用布局技术和修饰符从头开始构建自定义UI
-```
+```  
 
 **组件与视觉效果** 
 
