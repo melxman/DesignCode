@@ -46,6 +46,7 @@ struct UpdateList: View {
                         }
                         .padding(.vertical,8)
                     }
+                    .padding(-1.04)
                 }
                 .onDelete{ index in
                     self.store.updates.remove(at: index.first!)

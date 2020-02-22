@@ -17,6 +17,7 @@ struct ContentView: View {
     
     
     
+    
     var body: some View {
         ZStack {
             TitleView()       //命名要遵守规则，还要明确和突出作用，独一无二
@@ -91,7 +92,7 @@ struct ContentView: View {
             )
             //            Text("\(bottomState.height)").offset(y:-300)
             
-            BottonCardView()
+            BottonCardView(show:$showCard)
                 .offset(x: 0, y: showCard ?  360 : 1000)
                 .offset(y:bottomState.height)
                 .blur(radius:show ? 20 : 0)
@@ -191,6 +192,8 @@ struct TitleView: View {
 }
 
 struct BottonCardView: View {
+    @Binding var show:Bool
+    
     var body: some View {
         VStack(spacing: 20) {
             Rectangle()
@@ -202,6 +205,24 @@ struct BottonCardView: View {
                 .multilineTextAlignment(.center)    //居中
                 .font(.subheadline)       //副标题
                 .lineSpacing(4)    //行间距
+            
+            HStack(spacing:20) {
+                RingView(color1: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), color2: #colorLiteral(red: 0.2196078449, green: 0.007843137719, blue: 0.8549019694, alpha: 1), width: 88, height: 88, percent: 78, show: $show)
+                    .animation(Animation.easeInOut.delay(0.3))
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("SwiftUI").fontWeight(.bold)
+                    Text("12 of 12 sections completed\n10 hours spent so far")
+                        .font(.footnote)
+                        .foregroundColor(.gray)
+                        .lineSpacing(4)    //行距
+                }
+                .padding(20)
+                .background(Color.white)
+                .cornerRadius(20)
+                .shadow(color: Color.black.opacity(0.2), radius: 20, x: 0, y: 10)
+            }
+            
+            
             Spacer()            //间距扩展
         }
         .padding(.top,8)
