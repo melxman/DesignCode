@@ -5,6 +5,55 @@ DesignCode
 
 # Part 2
 
+*20200223*
+**hsdg **
+
+**数组中的动画状态**
+
+```
+通过使用索引从数组中的各个项目获取状态
+```
+
+* 之前有把text、image、logo储存调用的方式，现在可以来存储states了。继续创建struck
+
+* 然后所有的卡片都可以用GeometryReader来做了(repeat)
+
+* index的值很有用(foreach的循环数) 
+
+* ```
+  courses.indices,id: \.self   //提供索引,只有的item就可以用index代替了
+  ```
+
+* ```
+  self.$show2 ->  self.$courses[index].show  //不带$show2照样子替代
+  ```
+
+* 更改内容库，新增course(不能用binding)。并且卡片的show会增加course属性，为self.courses[index]
+
+* 更改高度位置定义(虽然这会产生卡片叠加显示的错误。下节课修复)
+
+* 创建标题
+
+**滚动过渡**
+
+```
+使用GeometryReader检测滚动位置并设置偏移量的动画
+```
+
+* 把视图元素添加到scrollview中,会出现元素点击后边距问题，用screen.width修复(让其识别屏幕宽度并且占满)
+
+* 多个卡片在scrollview时，下方卡面不会在点击后变成默认的上浮状态。所以需要用到GeometryReader
+
+* 把show状态做成binding后在Courselist中添加state状态。这时候会出现两个卡片一个动画内容的情况，你需要在state一个状态
+
+* ```
+  offset(y:self.show2 ? -geometry.frame(in .global).minY : 0 )   //使得下方的卡片在点击的时候全屏显示
+  ```
+
+* 当前的问题是，下方卡片全屏后忽略了顶部的安全区域
+
+---
+
 *20200222*
 
 **堆叠卡动画**
@@ -20,7 +69,6 @@ DesignCode
 * 不透明的设置,用来充当按钮的变化(本例:logo变关闭)。且需要把关闭图标设置在logo的上层的ZStack下
 
 * 重要：系统sf内置名称千万不要写错
-
 
 **自定义过渡**
 
