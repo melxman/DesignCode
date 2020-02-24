@@ -13,36 +13,54 @@ struct CourseList: View {
     //    @State var show = false
     //    @State var show2 = false
     @State var courses=courseData
+    @State var active = false
+    @State var activeIndex = -1
     
     var body: some View {
         
         
-        ScrollView {
-            VStack(spacing:30) {
-                Text("Courses")
-                    .font(.largeTitle).bold()
-                    .frame(maxWidth:.infinity,alignment:.leading)
-                    .padding(.leading,30)
-                    .padding(.top,30)
-                //                CourseView(show:$show)    //所有卡片应用同一模板
-                
-                //目前的问题是点击后全屏忽略了顶部的安全区域
-                ForEach(courses.indices,id: \.self) { index in
-                    GeometryReader { geometry in
-                        CourseView(show:self.$courses[index].show,course: self.courses[index])
-                            //点击显示后上移至全屏
-                            .offset(y:self.courses[index].show ? -geometry.frame(in: .global).minY : 0)
+        ZStack {
+            Color.black.opacity(active ? 0.5 : 0)               //增加全景的背景色变化动画
+                .animation(.linear)
+                .edgesIgnoringSafeArea(.all)
+            
+            ScrollView {
+                VStack(spacing:30) {
+                    Text("Courses")
+                        .font(.largeTitle).bold()
+                        .frame(maxWidth:.infinity,alignment:.leading)
+                        .padding(.leading,30)
+                        .padding(.top,30)
+                        //                CourseView(show:$show)    //所有卡片应用同一模板
+                        .blur(radius: active ? 20 : 0)              //动画变动的时候模糊标题
+                    
+                    //目前的问题是点击后全屏忽略了顶部的安全区域
+                    ForEach(courses.indices,id: \.self) { index in
+                        GeometryReader { geometry in
+                            CourseView(show:self.$courses[index].show,
+                                       course: self.courses[index],
+                                       active: self.$active,
+                                       index: index,
+                                       activeIndex:self.$activeIndex)
+                                //点击显示后上移至全屏
+                                .offset(y:self.courses[index].show ? -geometry.frame(in: .global).minY : 0)
+                                .opacity(self.activeIndex != index && self.active ? 0 : 1)        //透明
+                                .scaleEffect(self.activeIndex != index && self.active ? 0.5 : 1)            //形变
+                                .offset(x: self.activeIndex != index && self.active ? screen.width : 0)   //右移消失
+                        }
+                            //                    .frame(height: self.courses[index].show ? screen.height : 280)
+                            .frame(height:280)
+                            .frame(maxWidth: self.courses[index].show ? .infinity : screen.width - 60)
+                            .zIndex(self.courses[index].show ? 1 : 0)
                     }
-//                    .frame(height: self.courses[index].show ? screen.height : 280)
-                        .frame(height:280)
-                    .frame(maxWidth: self.courses[index].show ? .infinity : screen.width - 60)
                 }
+                .frame(width:screen.width)
+                .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0))
             }
-            .frame(width:screen.width)
-            .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0))
+                
+                .statusBar(hidden: active ? true : false)    //是否隐藏状态栏
+                .animation(.linear)
         }
-        
-        
     }
 }
 
@@ -55,6 +73,10 @@ struct CourseList_Previews: PreviewProvider {
 struct CourseView: View {
     @Binding var show:Bool
     var course:Course
+    @Binding var active:Bool
+    var index:Int
+    @Binding var activeIndex: Int
+    
     var body: some View {
         ZStack(alignment:.top) {
             VStack(alignment:.leading,spacing:30) {
@@ -118,10 +140,16 @@ struct CourseView: View {
                 
                 .onTapGesture {
                     self.show.toggle()
+                    self.active.toggle()
+                    if self.show {
+                        self.activeIndex=self.index
+                    }else{
+                        self.activeIndex = -1
+                    }
             }
             
         }
-            .frame(height: show ? screen.height : 280)
+        .frame(height: show ? screen.height : 280)
         .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0))
         .edgesIgnoringSafeArea(.all)
     }
