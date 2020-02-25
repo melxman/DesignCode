@@ -4,6 +4,18 @@ DesignCode
 ###### 跟着教程做练习(免费试读版)
 
 # Part 2
+*20200225*
+**缩放手势**
+> 向关闭手势添加缩放效果，3D旋转和色调
+
+* 在CourseView中设置。activeView的CGSize.在onTapGesture之前建立个DrogGesture
+* 在frame之后设置一个scaleEffect来处理缩放(1-高度/1000)
+* 在scaleEffect后添加rotation3DEffect
+* rotation3DEffect后添加hueRotation
+* 把DragGesture加进是否显示，可以杜绝在卡片打开的时候就可以hue
+* 为避免卡片全屏后缩放过度，在onChanged后加条件，控制缩放大小(if/guard) value.translation.height  不能上拉，不能过小
+* 最后把CourseView中的activeView Binding。用来改变背景色
+---
 *20200224*  
 
 **将索引传递给卡片**

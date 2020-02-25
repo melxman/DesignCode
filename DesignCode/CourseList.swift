@@ -15,12 +15,14 @@ struct CourseList: View {
     @State var courses=courseData
     @State var active = false
     @State var activeIndex = -1
+    @State var activeView=CGSize.zero
     
     var body: some View {
         
         
         ZStack {
-            Color.black.opacity(active ? 0.5 : 0)               //增加全景的背景色变化动画
+            //背景色随着卡变拉伸变形来改变
+            Color.black.opacity(Double(self.activeView.height/500))               //增加全景的背景色变化动画
                 .animation(.linear)
                 .edgesIgnoringSafeArea(.all)
             
@@ -41,7 +43,8 @@ struct CourseList: View {
                                        course: self.courses[index],
                                        active: self.$active,
                                        index: index,
-                                       activeIndex:self.$activeIndex)
+                                       activeIndex:self.$activeIndex,
+                                       activeView: self.$activeView)
                                 //点击显示后上移至全屏
                                 .offset(y:self.courses[index].show ? -geometry.frame(in: .global).minY : 0)
                                 .opacity(self.activeIndex != index && self.active ? 0 : 1)        //透明
@@ -76,8 +79,10 @@ struct CourseView: View {
     @Binding var active:Bool
     var index:Int
     @Binding var activeIndex: Int
+    @Binding var activeView : CGSize
     
     var body: some View {
+        
         ZStack(alignment:.top) {
             VStack(alignment:.leading,spacing:30) {
                 Text("Take your SwiftUI app to the App Store with advanced techniques like API data, packages and CMS.")
@@ -138,6 +143,27 @@ struct CourseView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
                 .shadow(color: Color(course.color).opacity(0.3), radius: 20, x: 0, y: 10)
                 
+                .gesture(
+                    show ?                  //避免在卡片未全屏时变色和缩放
+                        DragGesture().onChanged { value in
+                            //                            if value.translation.height < 300{    //预防拖拽缩放过小导致动画显示bug
+                            //return为结束运行,变形高度
+                            guard value.translation.height < 300 else { return}
+                            //下部不能变形
+                            guard value.translation.height > 0 else {return}
+                            self.activeView = value.translation
+                        }
+                            
+                        .onEnded{value in
+                            if self.activeView.height > 50 {
+                                self.show = false
+                                self.active = false
+                                self.activeIndex = -1
+                            }
+                            self.activeView = .zero
+                        }
+                        : nil
+            )
                 .onTapGesture {
                     self.show.toggle()
                     self.active.toggle()
@@ -150,8 +176,33 @@ struct CourseView: View {
             
         }
         .frame(height: show ? screen.height : 280)
-        .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0))
-        .edgesIgnoringSafeArea(.all)
+            .scaleEffect(1 - self.activeView.height / 1000)   //缩放，为了避免超过数值
+            .rotation3DEffect(Angle(degrees: Double(self.activeView.height / 10)), axis: (x: 0, y: 10.0, z: 0))         //3d动画，为了缩小角度
+            .hueRotation(Angle(degrees: Double(self.activeView.height)))  //变色
+            .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0))
+            //为了卡片下部也能拉伸变形
+            .gesture(
+                show ?                  //避免在卡片未全屏时变色和缩放
+                    DragGesture().onChanged { value in
+                        //                            if value.translation.height < 300{    //预防拖拽缩放过小导致动画显示bug
+                        //return为结束运行,变形高度
+                        guard value.translation.height < 300 else { return}
+                        //下部不能变形
+                        guard value.translation.height > 0 else {return}
+                        self.activeView = value.translation
+                    }
+                        
+                    .onEnded{value in
+                        if self.activeView.height > 50 {
+                            self.show = false
+                            self.active = false
+                            self.activeIndex = -1
+                        }
+                        self.activeView = .zero
+                    }
+                    : nil
+        )
+            .edgesIgnoringSafeArea(.all)
     }
 }
 
