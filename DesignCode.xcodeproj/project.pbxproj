@@ -16,6 +16,9 @@
 		5E30ABCF23EEDF4A00B1181D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E30ABCE23EEDF4A00B1181D /* Preview Assets.xcassets */; };
 		5E30ABD223EEDF4A00B1181D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E30ABD023EEDF4A00B1181D /* LaunchScreen.storyboard */; };
 		5E479D1823FEB47A00C792D5 /* UpdateStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E479D1723FEB47A00C792D5 /* UpdateStore.swift */; };
+		5E51D1C02406523600B2C7D3 /* CourseDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E51D1BF2406523600B2C7D3 /* CourseDetail.swift */; };
+		5E51D1C22406612900B2C7D3 /* Data.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E51D1C12406612900B2C7D3 /* Data.swift */; };
+		5E51D1C42406628800B2C7D3 /* PostList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E51D1C32406628800B2C7D3 /* PostList.swift */; };
 		5E573E5123FF692500E3FB39 /* Tabbar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E573E5023FF692500E3FB39 /* Tabbar.swift */; };
 		5E573E5323FF7F2B00E3FB39 /* RingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E573E5223FF7F2B00E3FB39 /* RingView.swift */; };
 		5E63884F23F7F35D003233F3 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E63884E23F7F35D003233F3 /* MenuView.swift */; };
@@ -47,6 +50,9 @@
 		5E30ABD123EEDF4A00B1181D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E30ABD323EEDF4A00B1181D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E479D1723FEB47A00C792D5 /* UpdateStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateStore.swift; sourceTree = "<group>"; };
+		5E51D1BF2406523600B2C7D3 /* CourseDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseDetail.swift; sourceTree = "<group>"; };
+		5E51D1C12406612900B2C7D3 /* Data.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Data.swift; sourceTree = "<group>"; };
+		5E51D1C32406628800B2C7D3 /* PostList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostList.swift; sourceTree = "<group>"; };
 		5E573E5023FF692500E3FB39 /* Tabbar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tabbar.swift; sourceTree = "<group>"; };
 		5E573E5223FF7F2B00E3FB39 /* RingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingView.swift; sourceTree = "<group>"; };
 		5E63884E23F7F35D003233F3 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
@@ -102,10 +108,13 @@
 				5EC3512923F9777F00A090C1 /* Home.swift */,
 				5EF49AAA23FAB6E300BD431E /* HomeView.swift */,
 				5E6547F224011D9D00127D88 /* CourseList.swift */,
+				5E51D1BF2406523600B2C7D3 /* CourseDetail.swift */,
 				5E63884E23F7F35D003233F3 /* MenuView.swift */,
 				5E21589C23FE3A3800A5074A /* UpdateList.swift */,
 				5E21589E23FE7AFB00A5074A /* UpdateDetail.swift */,
 				5E479D1723FEB47A00C792D5 /* UpdateStore.swift */,
+				5E51D1C12406612900B2C7D3 /* Data.swift */,
+				5E51D1C32406628800B2C7D3 /* PostList.swift */,
 				5E573E5023FF692500E3FB39 /* Tabbar.swift */,
 				5E573E5223FF7F2B00E3FB39 /* RingView.swift */,
 				5E85C1A3240000C700FCD145 /* Modifier.swift */,
@@ -225,6 +234,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E30ABC623EEDF4100B1181D /* AppDelegate.swift in Sources */,
+				5E51D1C22406612900B2C7D3 /* Data.swift in Sources */,
 				5E573E5123FF692500E3FB39 /* Tabbar.swift in Sources */,
 				5E479D1823FEB47A00C792D5 /* UpdateStore.swift in Sources */,
 				5E21589D23FE3A3800A5074A /* UpdateList.swift in Sources */,
@@ -234,7 +244,9 @@
 				5EC3512A23F9777F00A090C1 /* Home.swift in Sources */,
 				5E85C1A4240000C700FCD145 /* Modifier.swift in Sources */,
 				5EF49AAB23FAB6E300BD431E /* HomeView.swift in Sources */,
+				5E51D1C42406628800B2C7D3 /* PostList.swift in Sources */,
 				5E30ABC823EEDF4100B1181D /* SceneDelegate.swift in Sources */,
+				5E51D1C02406523600B2C7D3 /* CourseDetail.swift in Sources */,
 				5E30ABCA23EEDF4100B1181D /* ContentView.swift in Sources */,
 				5E6547F324011D9D00127D88 /* CourseList.swift in Sources */,
 			);

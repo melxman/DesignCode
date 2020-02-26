@@ -141,7 +141,7 @@ struct CourseView: View {
                 .frame(maxWidth: show ? .infinity : screen.width - 60,maxHeight: show ? 460 : 280)
                 .background(Color(course.color))
                 .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
-                .shadow(color: Color(course.color).opacity(0.3), radius: 20, x: 0, y: 10)
+                .shadow(color: Color(course.color).opacity(0.3), radius: 20, x: 0, y: 20)
                 
                 .gesture(
                     show ?                  //避免在卡片未全屏时变色和缩放
@@ -149,7 +149,7 @@ struct CourseView: View {
                             //                            if value.translation.height < 300{    //预防拖拽缩放过小导致动画显示bug
                             //return为结束运行,变形高度
                             guard value.translation.height < 300 else { return}
-                            //下部不能变形
+                            //下部不能上划变形
                             guard value.translation.height > 0 else {return}
                             self.activeView = value.translation
                         }
@@ -173,6 +173,12 @@ struct CourseView: View {
                         self.activeIndex = -1
                     }
             }
+            if show {                       //卡片全屏后调用内容视图，并且可以滚动，但是和translation目前的共存还是有些问题
+                
+//                CourseDetail(course: course, show: $show,active: $active,activeIndex: $activeIndex)
+//                    .background(Color.white)
+//                .animation(nil)                 //去除动画
+            }
             
         }
         .frame(height: show ? screen.height : 280)
@@ -180,14 +186,14 @@ struct CourseView: View {
             .rotation3DEffect(Angle(degrees: Double(self.activeView.height / 10)), axis: (x: 0, y: 10.0, z: 0))         //3d动画，为了缩小角度
             .hueRotation(Angle(degrees: Double(self.activeView.height)))  //变色
             .animation(.spring(response: 0.5, dampingFraction: 0.6, blendDuration: 0))
-            //为了卡片下部也能拉伸变形
+            //为了卡片下部也能下拉变形
             .gesture(
                 show ?                  //避免在卡片未全屏时变色和缩放
                     DragGesture().onChanged { value in
                         //                            if value.translation.height < 300{    //预防拖拽缩放过小导致动画显示bug
                         //return为结束运行,变形高度
                         guard value.translation.height < 300 else { return}
-                        //下部不能变形
+                        //下部不能上划变形
                         guard value.translation.height > 0 else {return}
                         self.activeView = value.translation
                     }

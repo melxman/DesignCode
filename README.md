@@ -4,6 +4,35 @@ DesignCode
 ###### 跟着教程做练习(免费试读版)
 
 # Part 2
+*20200226*
+**API和JSON**
+> 使用API数据创建一个ui列表，并使用onAppear修饰符
+
+* 3个网站
+* API调用并创建列表接口，combine快速动态更新每个视图内容
+* Post:Codable，Identifiable  可编码，可识别  创建参数。之后创建类，做api调用的url。UrlSession.shared.dateTask
+* completionHandler完成处理器  忽略用_  类型安全，所以要求url内能取到对应的类型值，否则要抛出错误。但是不建议用 ！强调。推荐用guard else
+* Swift解码 JSONDecoder  数值要用!    resume添加url会话调用
+* onAppear当视图被看到的时候显示的内容
+* 在预览play按钮上右键，"debug preview"可以打开控制台显示(或者真机调试运行，xcode上直接出来显示)
+
+* 对应的函数可以返回值
+```
+completion: @escaping ([Post] -> ())
+```
+* api数值调用需要和视图显示同步进行
+```
+DispatchQueue.main.async{
+completion(posts)
+}
+```
+
+**动态创建新视图**
+> 在现有的卡片动画上添加带有可滚动内容的新屏幕
+
+* 创建新视图，使其和现在有相同外观也有不同内容(技术展示)
+
+----
 *20200225*
 **缩放手势**
 > 向关闭手势添加缩放效果，3D旋转和色调
