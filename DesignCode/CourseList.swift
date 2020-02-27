@@ -25,6 +25,9 @@ struct CourseList: View {
             Color.black.opacity(Double(self.activeView.height/500))               //增加全景的背景色变化动画
                 .animation(.linear)
                 .edgesIgnoringSafeArea(.all)
+                .onAppear{
+                    getArray()
+            }
             
             ScrollView {
                 VStack(spacing:30) {

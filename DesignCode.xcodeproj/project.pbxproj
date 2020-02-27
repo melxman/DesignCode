@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -34,6 +34,9 @@
 		5E85C1B724000EFB00FCD145 /* WorkSans-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E85C1AD24000EFA00FCD145 /* WorkSans-Thin.ttf */; };
 		5E85C1B824000EFB00FCD145 /* WorkSans-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E85C1AE24000EFA00FCD145 /* WorkSans-Black.ttf */; };
 		5E85C1B924000EFB00FCD145 /* WorkSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5E85C1AF24000EFA00FCD145 /* WorkSans-Bold.ttf */; };
+		5EAD4E4A2407B95400AD7168 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAD4E492407B95400AD7168 /* DataStore.swift */; };
+		5EAD4E4C2407C96E00AD7168 /* CourseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAD4E4B2407C96E00AD7168 /* CourseStore.swift */; };
+		5EAD4E4F2407C9A600AD7168 /* Contentful in Frameworks */ = {isa = PBXBuildFile; productRef = 5EAD4E4E2407C9A600AD7168 /* Contentful */; };
 		5EC3512A23F9777F00A090C1 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC3512923F9777F00A090C1 /* Home.swift */; };
 		5EF49AAB23FAB6E300BD431E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF49AAA23FAB6E300BD431E /* HomeView.swift */; };
 /* End PBXBuildFile section */
@@ -68,6 +71,8 @@
 		5E85C1AD24000EFA00FCD145 /* WorkSans-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Thin.ttf"; sourceTree = "<group>"; };
 		5E85C1AE24000EFA00FCD145 /* WorkSans-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Black.ttf"; sourceTree = "<group>"; };
 		5E85C1AF24000EFA00FCD145 /* WorkSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WorkSans-Bold.ttf"; sourceTree = "<group>"; };
+		5EAD4E492407B95400AD7168 /* DataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
+		5EAD4E4B2407C96E00AD7168 /* CourseStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CourseStore.swift; sourceTree = "<group>"; };
 		5EC3512923F9777F00A090C1 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		5EF49AAA23FAB6E300BD431E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -77,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EAD4E4F2407C9A600AD7168 /* Contentful in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,12 +115,14 @@
 				5EF49AAA23FAB6E300BD431E /* HomeView.swift */,
 				5E6547F224011D9D00127D88 /* CourseList.swift */,
 				5E51D1BF2406523600B2C7D3 /* CourseDetail.swift */,
+				5EAD4E4B2407C96E00AD7168 /* CourseStore.swift */,
 				5E63884E23F7F35D003233F3 /* MenuView.swift */,
 				5E21589C23FE3A3800A5074A /* UpdateList.swift */,
 				5E21589E23FE7AFB00A5074A /* UpdateDetail.swift */,
 				5E479D1723FEB47A00C792D5 /* UpdateStore.swift */,
 				5E51D1C12406612900B2C7D3 /* Data.swift */,
 				5E51D1C32406628800B2C7D3 /* PostList.swift */,
+				5EAD4E492407B95400AD7168 /* DataStore.swift */,
 				5E573E5023FF692500E3FB39 /* Tabbar.swift */,
 				5E573E5223FF7F2B00E3FB39 /* RingView.swift */,
 				5E85C1A3240000C700FCD145 /* Modifier.swift */,
@@ -168,6 +176,9 @@
 			dependencies = (
 			);
 			name = DesignCode;
+			packageProductDependencies = (
+				5EAD4E4E2407C9A600AD7168 /* Contentful */,
+			);
 			productName = DesignCode;
 			productReference = 5E30ABC223EEDF4100B1181D /* DesignCode.app */;
 			productType = "com.apple.product-type.application";
@@ -196,6 +207,9 @@
 				Base,
 			);
 			mainGroup = 5E30ABB923EEDF4100B1181D;
+			packageReferences = (
+				5EAD4E4D2407C9A600AD7168 /* XCRemoteSwiftPackageReference "contentful.swift" */,
+			);
 			productRefGroup = 5E30ABC323EEDF4100B1181D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -233,8 +247,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EAD4E4C2407C96E00AD7168 /* CourseStore.swift in Sources */,
 				5E30ABC623EEDF4100B1181D /* AppDelegate.swift in Sources */,
 				5E51D1C22406612900B2C7D3 /* Data.swift in Sources */,
+				5EAD4E4A2407B95400AD7168 /* DataStore.swift in Sources */,
 				5E573E5123FF692500E3FB39 /* Tabbar.swift in Sources */,
 				5E479D1823FEB47A00C792D5 /* UpdateStore.swift in Sources */,
 				5E21589D23FE3A3800A5074A /* UpdateList.swift in Sources */,
@@ -442,6 +458,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5EAD4E4D2407C9A600AD7168 /* XCRemoteSwiftPackageReference "contentful.swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/contentful/contentful.swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.7;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		5EAD4E4E2407C9A600AD7168 /* Contentful */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5EAD4E4D2407C9A600AD7168 /* XCRemoteSwiftPackageReference "contentful.swift" */;
+			productName = Contentful;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5E30ABBA23EEDF4100B1181D /* Project object */;
 }

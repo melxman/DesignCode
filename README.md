@@ -4,6 +4,25 @@ DesignCode
 ###### 跟着教程做练习(免费试读版)
 
 # Part 2
+*20200227*
+**SPM和Contentful**
+> 使用内置的Swift Package Manager和Contentful图片库，从CMS中收集动态数据
+
+* Contentful库可以让你管理自己的内容(添加文字，图片等)，并使用他们的api
+* 在contentful.com上按照app的CourseList创建对应类型的Fields(弄了4个fields)
+* 新建个文件，然后引入Contentful,建立Client。在上面的网站的setting里建立个token。需要其中的spaceid和Delivery的access token
+* 建立个getArray函数，query(参照github上的教程)。contentTypeId
+* 在CourseList中添加onAppear，运行debug preview能看到4个Entry返回即为正常
+
+**API和Combine**
+> 通过combine使api数据被观察到
+
+* 创建一个新类，属于ObservableObject。创建一个可公开的posts空数组
+* 初始化一个getPosts()
+* 去除PostList中的onAppear，使用combine。替换State为ObservedOject store。注意函数调用需要()
+* 多个api数据的合并，用combine非常管用
+* 再回到Data.swift，因为！的运用，需要再加一个保障
+ 
 *20200226*
 **API和JSON**
 > 使用API数据创建一个ui列表，并使用onAppear修饰符
