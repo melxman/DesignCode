@@ -6,18 +6,20 @@ DesignCode
 # Part 2
 
 *20200228*  
-**Contentful和Combine**
-* 
+**Contentful和Combine**  
+
+* ...
 
   
 **SMP和Contentful**  
-* 
+
+* ...
 
 ....操作失误，内容空了可还行？
 
 
 ----
-*20200227*
+*20200227*  
 **SPM和Contentful**
 > 使用内置的Swift Package Manager和Contentful图片库，从CMS中收集动态数据
 
@@ -36,7 +38,7 @@ DesignCode
 * 多个api数据的合并，用combine非常管用
 * 再回到Data.swift，因为！的运用，需要再加一个保障
  
-*20200226*
+*20200226*  
 **API和JSON**
 > 使用API数据创建一个ui列表，并使用onAppear修饰符
 
@@ -65,7 +67,7 @@ completion(posts)
 * 创建新视图，使其和现在有相同外观也有不同内容(技术展示)
 
 ----
-*20200225*
+*20200225*  
 **缩放手势**
 > 向关闭手势添加缩放效果，3D旋转和色调
 
