@@ -4,6 +4,19 @@ DesignCode
 ###### 跟着教程做练习(免费试读版)
 
 # Part 2
+
+*20200228*  
+**Contentful和Combine**
+* 
+
+  
+**SMP和Contentful**  
+* 
+
+....操作失误，内容空了可还行？
+
+
+----
 *20200227*
 **SPM和Contentful**
 > 使用内置的Swift Package Manager和Contentful图片库，从CMS中收集动态数据
