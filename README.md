@@ -6,14 +6,38 @@ DesignCode
 # Part 2
 
 *20200228*  
-**Contentful和Combine**  
+**URL Images**  
+> 使用SDWebImageSwiftUI库异步加载网页图片
 
-* ...
+* 导入库
+* 更改Course定义中的image为URL。并且你需要获取到图片的网络地址(dropbox的地址www要换成dl)，在courseData数组中替换
+* CourseStore类中的image也要对应的替换
+
+
+    ```
+    item.fileds.linkAsset(at:"image")?.url ?? URL(String:"")!    //定义取图地址并且有可替换地址(string)，且强制取值类型
+```
+* import SDWebImageSwiftUI在需要的文件。切换Image图片为WebImage
+* 随机卡片颜色。在CourseStore的初始化中定义个颜色数组colors.并且在getArray中更改color为随机从colors中获取元素(且强制)
 
   
-**SMP和Contentful**  
+**Contentful和Combine**  
+> 从Contentful链接到api数据用来Combine内容
 
-* ...
+*CourseStore*  
+* 在getArray里定义两个参数,id/completion。Entry是Contentful里定义的数据模型。并且有返回值
+* switch循环语句(Contentful资料)。并且注意同步加载的地方。获取的是数组中的items
+* 创建一个combine类CouresStore(参照之前)，并且初始化getArray。记得foreach遍历。
+
+    ```
+ item.fileds["title"] as! String   //强制取值类型
+```
+
+*CourseList*  
+* course的定义状态，替换为store的ObseredOject。记得替换对应的位置
+  
+* 之后再返回CourseStore，用append添加Course数组内容。记得和之前getArray的取值一致。image/logo/color都可以用选取内置元素的方法,show默认否
+...
 
 ....操作失误，内容空了可还行？
 
