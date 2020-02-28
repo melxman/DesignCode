@@ -12,8 +12,9 @@ DesignCode
 * 导入库
 * 更改Course定义中的image为URL。并且你需要获取到图片的网络地址(dropbox的地址www要换成dl)，在courseData数组中替换
 * CourseStore类中的image也要对应的替换
+    
     ```
-item.fileds.linkAsset(at:"image")?.url ?? URL(String:"")!    //定义取图地址并且有可替换地址(string)，且强制取值类型
+    item.fileds.linkAsset(at:"image")?.url ?? URL(String:"")!    //定义取图地址并且有可替换地址(string)，且强制取值类型
 ```
  
 
