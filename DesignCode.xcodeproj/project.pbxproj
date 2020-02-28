@@ -38,6 +38,7 @@
 		5EAD4E4C2407C96E00AD7168 /* CourseStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EAD4E4B2407C96E00AD7168 /* CourseStore.swift */; };
 		5EAD4E4F2407C9A600AD7168 /* Contentful in Frameworks */ = {isa = PBXBuildFile; productRef = 5EAD4E4E2407C9A600AD7168 /* Contentful */; };
 		5EC3512A23F9777F00A090C1 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EC3512923F9777F00A090C1 /* Home.swift */; };
+		5EC94D3C2409038F009D996A /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 5EC94D3B2409038F009D996A /* SDWebImageSwiftUI */; };
 		5EF49AAB23FAB6E300BD431E /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF49AAA23FAB6E300BD431E /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5EC94D3C2409038F009D996A /* SDWebImageSwiftUI in Frameworks */,
 				5EAD4E4F2407C9A600AD7168 /* Contentful in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -178,6 +180,7 @@
 			name = DesignCode;
 			packageProductDependencies = (
 				5EAD4E4E2407C9A600AD7168 /* Contentful */,
+				5EC94D3B2409038F009D996A /* SDWebImageSwiftUI */,
 			);
 			productName = DesignCode;
 			productReference = 5E30ABC223EEDF4100B1181D /* DesignCode.app */;
@@ -209,6 +212,7 @@
 			mainGroup = 5E30ABB923EEDF4100B1181D;
 			packageReferences = (
 				5EAD4E4D2407C9A600AD7168 /* XCRemoteSwiftPackageReference "contentful.swift" */,
+				5EC94D3A2409038F009D996A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
 			);
 			productRefGroup = 5E30ABC323EEDF4100B1181D /* Products */;
 			projectDirPath = "";
@@ -468,6 +472,14 @@
 				minimumVersion = 5.0.7;
 			};
 		};
+		5EC94D3A2409038F009D996A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImageSwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.10.3;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -475,6 +487,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 5EAD4E4D2407C9A600AD7168 /* XCRemoteSwiftPackageReference "contentful.swift" */;
 			productName = Contentful;
+		};
+		5EC94D3B2409038F009D996A /* SDWebImageSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 5EC94D3A2409038F009D996A /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */;
+			productName = SDWebImageSwiftUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
