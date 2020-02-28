@@ -12,10 +12,9 @@ DesignCode
 * 导入库
 * 更改Course定义中的image为URL。并且你需要获取到图片的网络地址(dropbox的地址www要换成dl)，在courseData数组中替换
 * CourseStore类中的image也要对应的替换
-    
-    ```
-    item.fileds.linkAsset(at:"image")?.url ?? URL(String:"")!    //定义取图地址并且有可替换地址(string)，且强制取值类型```
- 
+  ```
+  item.fileds.linkAsset(at:"image")?.url ?? URL(String:"")!    //定义取图地址并且有可替换地址(string)，且强制取值类型
+  ```
 
 * import SDWebImageSwiftUI在需要的文件。切换Image图片为WebImage
 * 随机卡片颜色。在CourseStore的初始化中定义个颜色数组colors.并且在getArray中更改color为随机从colors中获取元素(且强制)
@@ -29,9 +28,10 @@ DesignCode
 * switch循环语句(Contentful资料)。并且注意同步加载的地方。获取的是数组中的items
 * 创建一个combine类CouresStore(参照之前)，并且初始化getArray。记得foreach遍历。
 
-    ```
- item.fileds["title"] as! String   //强制取值类型
-```
+  ```
+  item.fileds["title"] as! String   //强制取值类型
+  ```
+
 
 *CourseList*  
 * course的定义状态，替换为store的ObseredOject。记得替换对应的位置
@@ -75,15 +75,15 @@ DesignCode
 * 在预览play按钮上右键，"debug preview"可以打开控制台显示(或者真机调试运行，xcode上直接出来显示)
 
 * 对应的函数可以返回值
-```
-completion: @escaping ([Post] -> ())
-```
+  ```
+  completion: @escaping ([Post] -> ())
+  ```
 * api数值调用需要和视图显示同步进行
-```
-DispatchQueue.main.async{
-completion(posts)
-}
-```
+  ```
+  DispatchQueue.main.async{
+  completion(posts)
+  }
+  ```
 
 **动态创建新视图**
 > 在现有的卡片动画上添加带有可滚动内容的新屏幕
@@ -111,9 +111,9 @@ completion(posts)
 * 设置一个-1的索引来表示nothing(因为索引的初始为0)
 * binding参数需要$，var的不需要
 
-```
-self.activeIndex != index && self.active     //当触发索引不是索引而且触发状态false就绪时
-```
+  ```
+  self.activeIndex != index && self.active     //当触发索引不是索引而且触发状态false就绪时
+  ```
 * 以上只是参考动画  
 ---
 **Z索引和状态栏**
@@ -121,15 +121,16 @@ self.activeIndex != index && self.active     //当触发索引不是索引而且
 > 学习使用z索引修改背景并设置背景动  
 * 改变z轴上的显示状态
 
-```
-zIndex(self.courses[index].show ? 1 : 0)      //z索引改变显示状态
-```
+  ```
+  zIndex(self.courses[index].show ? 1 : 0)      //z索引改变显示状态
+  ```
 * 动画展开后隐藏状态栏，并binding一个状态到CourseView
 
-```
-statusBar(hidden:true)          //是否隐藏状态栏
-```
+  ```
+  statusBar(hidden:true)          //是否隐藏状态栏
+  ```
 * 添加整体动画时的背景色。添加个ZStack，在他下面添加颜色(不是background)
+
 ---
 *20200223*
 
@@ -146,14 +147,14 @@ statusBar(hidden:true)          //是否隐藏状态栏
 
 * index的值很有用(foreach的循环数) 
 
-* ```
+  ```
   courses.indices,id: \.self   //提供索引,只有的item就可以用index代替了
   ```
 
-* 
-```
-self.$show2 ->  self.$courses[index].show  //不带$show2照样子替代
-```
+
+  ```
+  self.$show2 ->  self.$courses[index].show  //不带$show2照样子替代
+  ```
   
 
 * 更改内容库，新增course(不能用binding)。并且卡片的show会增加course属性，为self.courses[index]
@@ -174,7 +175,7 @@ self.$show2 ->  self.$courses[index].show  //不带$show2照样子替代
 
 * 把show状态做成binding后在Courselist中添加state状态。这时候会出现两个卡片一个动画内容的情况，你需要在state一个状态
 
-* ```
+  ```
   offset(y:self.show2 ? -geometry.frame(in .global).minY : 0 )   //使得下方的卡片在点击的时候全屏显示
   ```
 
@@ -239,7 +240,7 @@ self.$show2 ->  self.$courses[index].show  //不带$show2照样子替代
 
 * 调用的时候.modifier(ShadowModifier())。字体的样式定义，在其函数之前定义style:Font.TextStyle=.body。之后在需要修饰的Text后调用。但是如果需要粗体，需要在调用之前先修饰
 
-* 
+
 
 **环形动画**
 
@@ -388,7 +389,6 @@ GeometryReader:一个容器视图，根据其自身大小和坐标空间定义�
 * 设置一个frame和view的尺寸相同
 
 * minX左边最小值(因为是水平滚动项目里是30)
-  
   ```
   geometry.frame(in: .global).minX    //从GeometryReader中获取图形的帧，本例子只需要左边的值
   ```
@@ -427,7 +427,7 @@ GeometryReader:一个容器视图，根据其自身大小和坐标空间定义�
 
 * ScrollView内的内容放在HStack中即可变成水平滚动(别忘了horizontal)。showIndicators滚动条指针
 
-* ```
+  ```
   maxWidth:.infinity   //元素宽度最大
   ```
 
@@ -441,9 +441,9 @@ GeometryReader:一个容器视图，根据其自身大小和坐标空间定义�
 
 * constant  当你创建一个新文件，而不是提取子视图的时候，在新文件底部有一个预览，这个预览会阻碍你跨文件调用。这个时候传入对应binding状态的时候，需要用到constant并且写入默认值
 
-* ```
-let screen=UIScreen.main.bounds   //允许我们检测屏幕尺寸。在外部声明可以在整个应用中重载
-```
+  ```
+  let screen=UIScreen.main.bounds   //允许我们检测屏幕尺寸。在外部声明可以在整个应用中重载
+  ```
 
 **拖动进度和点击背景**
 
@@ -467,12 +467,12 @@ let screen=UIScreen.main.bounds   //允许我们检测屏幕尺寸。在外部�
 * rederingMode修饰符可以去除按钮的内置着色
 * edgesIgnoringSateArea忽略安全区域(不是很推荐在父级上做，应该在每个需要的页面写)，特别是跨机型会造成问题(后期会处理)
 
-* ```
-.rotation3DEffect(Angle(degrees: showProfile ? -10 : 0), axis: (x: 10, y: 0, z: 0))     //后掀
-```
-```
-.rotation3DEffect(Angle(degrees: showProfile ? -10 : 0), axis: (x: 0, y: 10, z: 0))    //上滑
-```
+  ```
+  .rotation3DEffect(Angle(degrees: showProfile ? -10 : 0), axis: (x: 10, y: 0, z: 0))     //后掀
+  ```
+  ```
+  .rotation3DEffect(Angle(degrees: showProfile ? -10 : 0), axis: (x: 0, y: 10, z: 0))    //上滑
+  ```
 
 -------
 
