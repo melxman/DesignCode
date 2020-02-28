@@ -14,8 +14,7 @@ DesignCode
 * CourseStore类中的image也要对应的替换
     
     ```
-    item.fileds.linkAsset(at:"image")?.url ?? URL(String:"")!    //定义取图地址并且有可替换地址(string)，且强制取值类型
-```
+    item.fileds.linkAsset(at:"image")?.url ?? URL(String:"")!    //定义取图地址并且有可替换地址(string)，且强制取值类型```
  
 
 * import SDWebImageSwiftUI在需要的文件。切换Image图片为WebImage
