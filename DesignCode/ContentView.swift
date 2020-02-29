@@ -228,7 +228,9 @@ struct BottonCardView: View {
         .padding(.top,8)
         .padding(.horizontal,20)
             .frame(maxWidth:.infinity)        //自动最大宽度
-            .background(Color.white)
+//            .background(Color.white)
+//            .background(BlurView(style: .systemMaterial))
+            .background(BlurView(style: .systemThinMaterial))
             .cornerRadius(30)
             .shadow(radius: 20)
         

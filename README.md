@@ -5,6 +5,26 @@ DesignCode
 
 # Part 2
 
+*20200229*  
+**背景模糊**
+> 为菜单和屏幕创建一个模糊的背景
+
+从现在开始，使用的都是普通Swift语言
+*  SwiftUI不能直接创建背景模糊，所以需要用到UIViewRepresentable(UIKit)。建立struct，然后根据错误提示进行快速fix
+*  CGRect.zero  是为了使用自动布局，先做一个初始点    backgroundColor=.clear  确保背景无任何颜色。 记得返回值
+*  现在我们可以声明模糊了。UIBlurEffect。推荐用systemMaterial系统材质(随系统主题变化)。blurView定义UIVisualEffectView
+* 把view插入模糊insertSubView
+* 自动布局，translatesAutoresizingMaskIntoConstraints 默认不开启(需要在插入之前)
+* 设置约束 NSLayoutConstraint.activate  高度widthAnchor 、宽度heightAnchor(数组)  都等于view本身的数值  
+* updataUIView暂时不需要
+* 如果需要自定义风格，则定义sytle:UIBlurEffect.sytle
+
+调用开始
+* ContentView中需要模糊的地方直接调用View本身就可以了
+
+注意:大小写和确定是哪个定义
+
+----
 *20200228*  
 **URL Images**  
 > 使用SDWebImageSwiftUI库异步加载网页图片
