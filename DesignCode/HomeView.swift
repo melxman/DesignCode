@@ -29,10 +29,12 @@ struct HomeView: View {
                     
                     Button(action: {self.showUpdate.toggle()}) {
                         Image(systemName: "bell")
-                            .renderingMode(.original)
+//                            .renderingMode(.original)  //注释掉才能更换颜色
+                            .foregroundColor(.primary)  //首选更适合文字内容
                             .font(.system(size: 16, weight: .medium))
                             .frame(width:36,height: 36)
-                            .background(Color.white)
+                            .background(Color("background3"))
+                            
                             .clipShape(Circle())
                             .shadow(color: Color.black.opacity(0.1), radius: 1, x: 0, y: 1)
                             .shadow(color: Color.black.opacity(0.2), radius: 10, x: 0, y: 10)
@@ -91,6 +93,7 @@ struct HomeView: View {
                 Spacer()
                 
             }
+            .frame(width:screen.width)
         }
     }
 }
@@ -165,7 +168,7 @@ struct WatchRingsView: View {
                 
                 VStack(alignment: .leading, spacing: 4) {
                     Text("6 minutes left").bold().modifier(FontModifier(style: .subheadline))
-                    Text("Watched 10 mins today").modifier(FontModifier(style: .caption))
+                    Text("Watched 10 mins today").modifier(FontModifier(style: .caption))    //因为没设置颜色，所以自动适应了
                 }
                 .modifier(FontModifier())
                 
@@ -173,7 +176,7 @@ struct WatchRingsView: View {
             }
                 
             .padding(8)
-            .background(Color.white)
+            .background(Color("background3"))
             .cornerRadius(20)
             .modifier(ShadowModifier())
             
@@ -185,7 +188,7 @@ struct WatchRingsView: View {
             }
                 
             .padding(8)
-            .background(Color.white)
+            .background(Color("background3"))
             .cornerRadius(20)
             .modifier(ShadowModifier())
             
@@ -198,7 +201,7 @@ struct WatchRingsView: View {
             }
                 
             .padding(8)
-            .background(Color.white)
+            .background(Color("background3"))
             .cornerRadius(20)
             .modifier(ShadowModifier())
         }

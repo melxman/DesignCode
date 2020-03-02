@@ -5,6 +5,33 @@ DesignCode
 
 # Part 2
 
+*20200302*
+**暗黑模式和辅助功能**
+> 如何在SwiftUI中开发暗黑模式和辅助功能选项
+
+摸鱼了一天...  
+* 让app完全适用dark mode
+* Home中previewprovider中定义。 你能看到背景的白色(但是之前的模糊已经自动适应了)
+  ```
+  .environment*(\.colorScheme,.dark)    //开启暗黑模式预览
+  ```
+* 去Assets_scassets资产目录。  
+颜色里，查看每个自定义颜色都有深色外观(右侧检查器，Appearances中Any,Dark之类的)。还可以选择默认内置的自适应。例子里改动了LinearGradient渐变中的背景颜色为background1，但是会一直使用这个黑色。
+* 修改其他视图之前，记得pin Home.view。
+* MenuView的渐变(因为要位于较暗背景的顶部，所以用了3)。很推荐用不透明的定义。尽量少用.white/.black这种硬定义颜色。或者整个菜单换成定义的BlurView(ios中显示暗淡色时，顶层颜色比背景色轻)
+* HomeView中的按钮和环状。因为renderingMode存在，无法更改颜色，所以注释掉。前景色用primary。当Text没有设置任何背景色时，会自动设置黑色背景用来适应暗黑模式
+* Home中的ContentView定义颜色。继续BlurView
+* ContentView中的ButtomCardView
+* 背景亮度问题。(1，从资产中导出暗黑模式的图片pdf,回到background1的资产中，在Appearances选择Any,Dark后添加进去)
+* 自动匹配大字体用户。字体动态尽量用(20px以下).title .body .caption 
+  ```
+  .environment*(\.sizeCategory,.extraLarge)    //开启大字体适配
+  ```
+* 当你发现某一个视图还是亮色模式时，你需要启动模拟器，然后改动它到暗黑模式
+* 最后两个问题   
+底部标签：把ContentView改为CourseList即可  
+标签切换时候的转变动画：没设定当前屏幕的默认宽度  HomeView中设置 VStack的宽度(screen.width)。顺便再改动CourseList中的背景颜色
+
 *20200229*  
 **背景模糊**
 > 为菜单和屏幕创建一个模糊的背景

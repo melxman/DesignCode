@@ -36,7 +36,8 @@ struct MenuView: View {
             .frame(maxWidth:.infinity)
             .frame(height:300)
                 //colorliteral拾色器直接选色.gradient渐变
-                .background(LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)), Color(#colorLiteral(red: 0.8705882353, green: 0.8941176471, blue: 0.9450980392, alpha: 1))]), startPoint: .top, endPoint: .bottom))
+//                .background(LinearGradient(gradient: Gradient(colors: [Color("background3"), Color("background3").opacity(0.6)]), startPoint: .top, endPoint: .bottom))
+                .background(BlurView(style: .systemMaterial))  //模糊似乎更好？
                 //设置Stack外观圆角要在clipshape这个剪辑形状修饰符下
                 .clipShape(RoundedRectangle(cornerRadius: 30, style:.continuous))
                 //                .shadow(radius: 30)
